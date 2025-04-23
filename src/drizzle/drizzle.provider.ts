@@ -5,8 +5,7 @@ import { ConfigService } from '@nestjs/config';
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 import { LoggerService } from '@nestjs/common';
-import { DefaultLogger, Logger } from 'drizzle-orm';
-import chalk from 'chalk';
+import * as pc from 'picocolors';
 
 export const DrizzleDBProvider = 'DrizzleDBProvider';
 
@@ -26,7 +25,7 @@ export const drizzleProvider = [
                 logger: {
                     logQuery: (query: string, params: unknown[]) => {
                         logger.debug?.(
-                            `[${chalk.cyan('query')}] ${query} [${chalk.cyan('param')}] ${JSON.stringify(params)}`,
+                            `${pc.gray('query:')} ${query} ${pc.gray('param:')} ${JSON.stringify(params)}`,
                             'Drizzle',
                         );
                     },

@@ -1,8 +1,8 @@
 import * as winston from 'winston';
-import chalk from 'chalk';
+import * as pc from 'picocolors';
 
 const customPrintf = winston.format.printf(({ level, message, timestamp, context }) => {
-    return `${chalk.gray(`[${timestamp}]`)} [${level}]: ${chalk.gray(`[${context}]`)} ${message}`;
+    return `${pc.gray(`${timestamp}`)} [${pc.bold(level)}] \n[${pc.bold(`${context}`)}] ${message}\n`;
 });
 
 export const winstonOptions: winston.LoggerOptions = {
